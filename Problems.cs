@@ -1,4 +1,7 @@
 //Ryan Ball
+using System;
+using System.Linq;
+
 namespace EulerProblems
 {
     interface IEulerProblem
@@ -30,6 +33,38 @@ namespace EulerProblems
 	private bool IsEven(int x)
 	{
 	    if(x % 2 == 0)
+	    {
+		return true;
+	    }
+	    return false;
+	}
+    }
+
+    class Problem4 : IEulerProblem
+    {
+	int product = 0;
+	int result = 0;
+	public string GetAnswer()
+	{
+	    //This loop should only test each combination once.
+	    for(int i = 100; i <= 999; i++)
+	    {
+		for(int j = 100; j <= i; j++)
+		{
+		    product = i * j;
+		    if(isPalindrome(product) && (product > result))
+		    {
+			result = product;
+		    }
+		}
+	    }
+	    return result.ToString();
+	}
+
+	private bool isPalindrome(int num)
+	{
+	    string numString = num.ToString();
+	    if(numString == new string(numString.Reverse().ToArray()))
 	    {
 		return true;
 	    }
