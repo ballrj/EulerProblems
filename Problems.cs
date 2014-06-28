@@ -71,4 +71,61 @@ namespace EulerProblems
 	    return false;
 	}
     }
+
+    class Problem14 : IEulerProblem
+    {
+	private int[] stepArray;
+
+	public Problem14()
+	{
+	    stepArray = new int[1000000];
+	}
+
+	public string GetAnswer()
+	{
+	    int steps;
+	    int maxSteps = 0;
+	    int result = 0;
+	    long current = 0L;
+	    for(int i = 1; i < 1000000; i++)
+	    {
+		current = i;
+		steps = 0;
+		while(current != 1)
+		{
+		    steps++;
+		    if(IsEven(current))
+		    {
+			current = current / 2;
+			if(current < i)
+			{
+			    //Console.WriteLine(current);
+			    steps += stepArray[(int)current];
+			    current = 1;
+			}
+		    }
+		    else
+		    {
+			current = (current * 3) + 1;
+		    }
+		}
+		stepArray[i] = steps;
+		if(steps > maxSteps)
+		{
+		    maxSteps = steps;
+		    result = i;
+		}
+	    }
+	    return result.ToString();
+	}
+
+	private bool IsEven(long x)
+	{
+	    if(x % 2 == 0)
+	    {
+		return true;
+	    }
+	    return false;
+	}
+    }
 }
