@@ -12,6 +12,7 @@ namespace EulerProblems
 	    problems.Add(2, new Problem2());
 	    problems.Add(4, new Problem4());
 	    problems.Add(14, new Problem14());
+	    problems.Add(54, new Problem54());
 	    string userInput = "";
 	    int inputInt;
 	    IEulerProblem currentProblem;
@@ -21,7 +22,8 @@ namespace EulerProblems
 		Console.WriteLine("Available Euler Project problems are:");
 		Console.WriteLine("2. Even Fibonacci numbers");
 		Console.WriteLine("4. Largest palindrome product");
-		Console.WriteLine("14. Longest Collatz sequence\n");
+		Console.WriteLine("14. Longest Collatz sequence");
+		Console.WriteLine("54. Poker hands\n");
 		Console.WriteLine("Type a number to see the answer. Type 'q' to quit.\n");
 		userInput = Console.ReadLine();
 		try
